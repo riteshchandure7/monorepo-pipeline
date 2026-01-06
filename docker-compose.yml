@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  admin:
+    build: ./apps/admin
+    ports:
+      - "3001:4173"
+
+  marketing:
+    build: ./apps/marketing
+    ports:
+      - "3002:4173"
+
+  workspace:
+    build: ./apps/workspace
+    ports:
+      - "3003:4173"
+
+  users-api:
+    build: ./services/users-api
+    ports:
+      - "4001:4000"
+
+  orders-api:
+    build: ./services/orders-api
+    ports:
+      - "4002:4000"
