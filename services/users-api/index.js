@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-app.get("/users", (req, res) => {
+app.get("/api/users", (req, res) => {
   res.json({
     service: "users-api",
     users: [
@@ -11,6 +11,6 @@ app.get("/users", (req, res) => {
   });
 });
 
-app.listen(4000, () =>
-  console.log("Users API running on port 4000")
-);
+app.listen(4000, () => {
+  console.log("Users API running on port 4000");
+});

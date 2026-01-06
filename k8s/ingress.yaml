@@ -1,0 +1,51 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: monorepo-ingress
+  namespace: monorepo
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          # APIs — Exact match (CRITICAL FIX)
+          - path: /api/users
+            pathType: Exact
+            backend:
+              service:
+                name: users-api
+                port:
+                  number: 4000
+
+          - path: /api/orders
+            pathType: Exact
+            backend:
+              service:
+                name: orders-api
+                port:
+                  number: 4000
+
+          # Frontends — Prefix is fine
+          - path: /admin
+            pathType: Prefix
+            backend:
+              service:
+                name: admin
+                port:
+                  number: 80
+
+          - path: /marketing
+            pathType: Prefix
+            backend:
+              service:
+                name: marketing
+                port:
+                  number: 80
+
+          - path: /workspace
+            pathType: Prefix
+            backend:
+              service:
+                name: workspace
+                port:
+                  number: 80
