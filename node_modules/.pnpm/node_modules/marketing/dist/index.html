@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marketing App</title>
+</head>
+<body>
+  <h1>📢 Marketing Frontend</h1>
+  <button onclick="callApi()">Call Users API</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function callApi() {
+      const res = await fetch("http://localhost:4001/users");
+      const data = await res.json();
+      document.getElementById("output").innerText =
+        JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
