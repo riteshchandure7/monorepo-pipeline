@@ -67,13 +67,12 @@ jobs:
         run: kubectl get nodes
 
 
-     # 🔟 Deploy to Kubernetes
+      # 🔟 Deploy to Kubernetes
       - name: Deploy to Kubernetes
-  run: |
-    kubectl apply -f k8s/
-    kubectl rollout restart deployment admin -n monorepo
-    kubectl rollout restart deployment marketing -n monorepo
-    kubectl rollout restart deployment workspace -n monorepo
-    kubectl rollout restart deployment users-api -n monorepo
-    kubectl rollout restart deployment orders-api -n monorepo
-
+        run: |
+          kubectl apply -f k8s/
+          kubectl rollout restart deployment admin -n monorepo
+          kubectl rollout restart deployment marketing -n monorepo
+          kubectl rollout restart deployment workspace -n monorepo
+          kubectl rollout restart deployment users-api -n monorepo
+          kubectl rollout restart deployment orders-api -n monorepo
